@@ -39,6 +39,7 @@ var uiConfig = {
     firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
+  /*
 // tosUrl and privacyPolicyUrl accept either url string or a callback
 // function.
 // Terms of service url/callback.
@@ -47,6 +48,7 @@ var uiConfig = {
   privacyPolicyUrl: function() {
     window.location.assign('<your-privacy-policy-url>');
   }
+  */
 };
 
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
