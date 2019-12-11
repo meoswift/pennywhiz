@@ -1,42 +1,42 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyBI7YW8WHkQn6Mvp7bjt6O0fGjiPhxVv6A",
-    authDomain: "pennywhiz-49ed0.firebaseapp.com",
-    databaseURL: "https://pennywhiz-49ed0.firebaseio.com",
-    projectId: "pennywhiz-49ed0",
-    storageBucket: "pennywhiz-49ed0.appspot.com",
-    messagingSenderId: "337268457584",
-    appId: "1:337268457584:web:d7c1950702b3d2741f34b5",
-    measurementId: "G-HZMF81JZD0"
-};
+const sidebarList = document.querySelectorAll('#sidebar li button')
+const sidebar = document.querySelector('#sidebar')
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const LOCAL_STORAGE_SELECTED_TAB_ID_KEY = 'tab.selectedId'
+let selectedTabId = localStorage.getItem(LOCAL_STORAGE_SELECTED_TAB_ID_KEY)
 
-const ui = new firebaseui.auth.AuthUI(firebase.auth());
+const list = []
 
-const uiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult(authResult, redirectUrl) {
-      return true;
-    }
-  },
-  signInFlow: 'redirect',
-  signInSuccessUrl: 'overview',
-  signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID
-  ],
-};
-
-ui.start('#firebaseui-auth-container', uiConfig);
-
-var name = '';
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    console.log('signed in');
-    name = user.displayName;
-    document.querySelector('#name').textContent = name;
-  } else {
-    console.log('not signed in');
+sidebar.addEventListener('click', e => {
+  if (e.target.tagName.toLowerCase() === 'button') {
+      selectedTabId = e.target.id   
   }
-});
+  saveAndRender()
+})
+
+
+function save() {
+  localStorage.setItem(LOCAL_STORAGE_SELECTED_TAB_ID_KEY, selectedTabId)
+}
+
+function render() {
+  sidebarList.forEach(tab => {
+    const pageId = 'money-' + tab.id
+    const currentTab = document.getElementById(pageId)
+
+    if (tab.id == selectedTabId) {
+        tab.classList.add("clicked")
+        currentTab.classList.remove('hidden')
+    }
+    else {
+        tab.classList.remove("clicked")
+        currentTab.classList.add('hidden')
+    }
+  });
+}
+
+function saveAndRender() {
+  save()
+  render()
+}
+
+saveAndRender()
