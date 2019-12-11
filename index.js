@@ -9,7 +9,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb://gmelcher:131313A@ds253428.mlab.com:53428/heroku_k05ffvws";
 MongoClient.connect(uri, function (err, client) {
   // perform actions on the collection object
-  client.close();
+  //client.close();
 });
 
 express()
