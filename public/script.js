@@ -4,10 +4,6 @@ const sidebar = document.querySelector('#sidebar')
 const LOCAL_STORAGE_SELECTED_TAB_ID_KEY = 'tab.selectedId'
 let selectedTabId = localStorage.getItem(LOCAL_STORAGE_SELECTED_TAB_ID_KEY)
 
-
-// Initalize first to planned so the user is redirected to planned automatically
-selectedTabId = 'Planned'
-
 const list = []
 
 sidebar.addEventListener('click', e => {
