@@ -15,8 +15,6 @@
     "express": "^4.15.2",
     "mongodb": "^3.3.4",
     "mongoose": "^5.7.12"
-    "firebase" "^7.4.0",
-    "firebaseui": "^4.3.0"
   },
   "devDependencies": {
     "@types/convict": "^4.2.1",
