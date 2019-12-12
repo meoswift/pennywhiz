@@ -39,10 +39,12 @@ itemsContainer.addEventListener('click', e => {
       selectedItemId = e.target.parentNode.parentNode.parentNode.id
             
       budgetList.forEach(category => {
+        const index = budgetList.indexOf(category)
+        const selectedItem = category.items.filter((item => item.id === selectedItemId))  
         category.items = category.items.filter((item => item.id !== selectedItemId))  
       })
       
-      selectedItemId = null
+      selectedItemId = null      
       save()
       renderItems()
   }
@@ -55,7 +57,7 @@ let selectedTabId = localStorage.getItem(LOCAL_STORAGE_SELECTED_TAB_ID_KEY) || '
 // List of budgets - inside each budget category is a list of items spent
 const LOCAL_STORAGE_BUDGET_LIST_ID_KEY = 'budgets.id'
 let budgetList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_BUDGET_LIST_ID_KEY)) || []
-//console.log(budgetList);
+console.log(budgetList);
 
 // When an item on the side bar is clicked on, direct the user to that tab
 sidebar.addEventListener('click', e => {
@@ -90,7 +92,7 @@ newBudgetForm.addEventListener("submit", e => {
 newItemForm.addEventListener("submit", e => {
   e.preventDefault()
   newDescription.focus()
-  
+
   const itemDescription = newDescription.value
   const itemPrice = newPrice.value
   const categoryName = categoryOptions.value
@@ -110,7 +112,12 @@ newItemForm.addEventListener("submit", e => {
         index = budgetList.indexOf(category)
   })
 
-  budgetList[index].items.push(item)
+  const budgetCategory = budgetList[index]
+  budgetCategory.items.push(item)
+
+  budgetCategory.remained -= parseInt(item.price)
+
+  console.log(budgetCategory.remained)
 
   setSelectedOption()
   save()
@@ -118,13 +125,13 @@ newItemForm.addEventListener("submit", e => {
 })
 
 // Create a new object in the budget list. Object has a name, amount, and list of spent items
-function createBudget(category , amount) {
-  console.log(budgetList);
+function createBudget(category , amount) {  
   return {
     id: Date.now().toString(),
     name: category,
     budget: amount,
-    items: []
+    items: [],
+    remained: amount
   }
 }
 
