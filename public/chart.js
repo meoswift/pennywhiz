@@ -34,7 +34,7 @@
 			}]
 		};
 
-    let expensesChart = new Chart(myChart, {
+    let myChart = new Chart(myChart, {
       type:'bar',
       data: barChartData,
       options:{
