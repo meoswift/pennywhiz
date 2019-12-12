@@ -78,14 +78,14 @@
 			    var day = response.dayOfTheWeek;
           var time = response.currentDateTime;
       }
-      var temp = "";
-      for (var i = 0; i < time.length; i++) {
-          if (time[i] == 'T') {
-              break;
-          }
-          temp += time[i];
-      }
-      document.write(day + ", " + temp);
+//       var temp = "";
+//       for (var i = 0; i < time.length; i++) {
+//           if (time[i] == 'T') {
+//               break;
+//           }
+//           temp += time[i];
+//       }
+      document.write(day + ", " + time);
     };
     xhttp.open("GET", "http://worldclockapi.com/api/json/est/now", true);
     xhttp.send();
