@@ -1,52 +1,38 @@
-    let myChart = document.getElementById('myChart').getContext('2d');
+let myChart = document.getElementById('myChart').getContext('2d');
 
-    Chart.defaults.global.defaultFontFamily = 'Nunito';
+    Chart.defaults.global.defaultFontFamily = 'Helvetica';
     Chart.defaults.global.defaultFontSize = 20;
     Chart.defaults.global.defaultFontColor = 'grey';
+    //
+    //var categoryLabels = [];
+    // categoryLabels.push( ) //categories of users!!
+    //
+    // var expensesData = [];
+    // var expensesColor = [];
 
     var spentData = [];
-    var remainData = [];
+    //var remainData = [];
     var labelsCategory = [];
 
-    //category.name needs to be distinct!
-    //category.budget needs to be a total!!
-
-  //   budgetList.forEach(category => {
-  //     labelsCategory.push(category.name);
-  //     spentData.push(category.budget);
-  //     remainData.push(     );
-  //   }
-  //
-  //   budgetList.forEach(category => {
-  //   if (category.name != labelsCategory)
-  //       index = labelsCategory.push(category.name)
-  //   else (spent )
-  // })
-
-    spentData.push('2200');
-    remainData.push('1000');
-    labelsCategory.push('Household');
-
-    spentData.push('200');
-    remainData.push('700');
-    labelsCategory.push('Shopping');
-
-    var barChartData = {
-			labels: labelsCategory,
-			datasets: [{
-				label: 'Spent',
-				backgroundColor: '#f49898',
-				data: spentData
-			}, {
-				label: 'Remaining',
-				backgroundColor: '#95ddab',
-				data: remainData
-			}]
-		};
+    for (i = 0; i < budgetList.length(); i++){
+        spentData.push('budgetList[i].budget');
+        labelsCategory.push('budgetList[i].name');
+    }
 
     let expensesChart = new Chart(myChart, {
-      type:'bar',
-      data: barChartData,
+      type:'pie',
+      data:{
+        labels: labelsCategory,
+        datasets:[{
+          label: 'Expenses',
+          data: spentData,
+          //backgroundColor: ['#f1e0bb', '#f5d697', '#f4cc79', '#f7cc6e', '#f9bb37'],
+          borderWidth:1,
+          borderColor:'grey',
+          hoverBorderWidth:3,
+          hoverBorderColor:'black'
+        }]
+      },
       options:{
         title: {
           display: false,
@@ -61,40 +47,12 @@
         layout: {
           padding: 20
         },
-        scales: {
-          xAxes: [{
-            stacked: true,
-          }],
-          yAxes: [{
-            stacked: true
-          }]
-        },
         tooltips: {
-          enabled: true,
-          mode: 'single',
-          callbacks: {
-                  label: function(tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].label;
-                    var datasetLabel = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                    return label + ': $' + addCommas(datasetLabel) ;
-                  }
-                }
-              }
-            }
+          enabled: true
+        },
+        //animation: true
+      }
     });
-
-    function addCommas(nStr)
-    {
-       nStr += '';
-        x = nStr.split('.');
-        x1 = x[0];
-        x2 = x.length > 1 ? '.' + x[1] : '';
-        var rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + ',' + '$2');
-        }
-        return x1 + x2;
-    }
 
     function addData(chart, label, data) {
       chart.data.labels.push(label);
