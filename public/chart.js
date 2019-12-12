@@ -28,12 +28,12 @@
 		};
 
 		window.onload = function() {
-			var ctx = document.getElementById('myChart').getContext('2d');
+			var myChart = document.getElementById('myChart').getContext('2d');
 
 			Chart.defaults.global.defaultFontSize = 20;
 			Chart.defaults.global.defaultFontFamily = 'Helvetica';
 
-			window.myBar = new Chart(ctx, {
+			window.myBar = new Chart(myChart, {
 				type: 'bar',
 				data: barChartData,
 				options: {
