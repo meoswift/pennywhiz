@@ -11,7 +11,7 @@ let myChart = document.getElementById('myChart').getContext('2d');
     // var expensesColor = [];
 
     let expensesChart = new Chart(myChart, {
-      type:'pie',
+      type:'bar',
       data:{
         labels: ['C1','C2','C3','C4','C5'],
         datasets:[{
