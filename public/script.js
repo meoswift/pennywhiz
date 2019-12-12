@@ -119,6 +119,7 @@ newItemForm.addEventListener("submit", e => {
 
 // Create a new object in the budget list. Object has a name, amount, and list of spent items
 function createBudget(category , amount) {
+  console.log(budgetList);
   return {
     id: Date.now().toString(),
     name: category,
