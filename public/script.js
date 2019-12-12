@@ -18,6 +18,34 @@ const newDescription = document.querySelector('[data-new-description]')
 const newPrice = document.querySelector('[data-new-price]')
 const categoryOptions = document.querySelector('[data-category-options')
 
+// Remove a category
+let selectedCategoryId = null
+
+budgetContainer.addEventListener('click', e => {
+  if (e.target.parentNode.id === "close") {
+      selectedCategoryId = e.target.parentNode.parentNode.parentNode.id
+      budgetList = budgetList.filter(list => list.id !== selectedCategoryId)
+      selectedCategoryId = null
+      renderBudgets()
+  }
+})
+
+// Remove a spent item
+let selectedItemId = null
+
+itemsContainer.addEventListener('click', e => {
+  if (e.target.parentNode.id === "close") {
+      selectedItemId = e.target.parentNode.parentNode.parentNode.id
+            
+      budgetList.forEach(category => {
+        category.items = category.items.filter((item => item.id !== selectedItemId))  
+      })
+      
+      selectedItemId = null
+      renderItems()
+  }
+})
+
 // Use local storage to store which tab the user is on - store key and get items
 const LOCAL_STORAGE_SELECTED_TAB_ID_KEY = 'tab.selectedId'
 let selectedTabId = localStorage.getItem(LOCAL_STORAGE_SELECTED_TAB_ID_KEY) || 'planned'
@@ -25,13 +53,13 @@ let selectedTabId = localStorage.getItem(LOCAL_STORAGE_SELECTED_TAB_ID_KEY) || '
 // List of budgets - inside each budget category is a list of items spent
 const LOCAL_STORAGE_BUDGET_LIST_ID_KEY = 'budgets.id'
 let budgetList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_BUDGET_LIST_ID_KEY)) || []
-console.log(budgetList);
+//console.log(budgetList);
 
 // When an item on the side bar is clicked on, direct the user to that tab
 sidebar.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'button') {
       selectedTabId = e.target.id   
-  }
+  }  
   saveAndRender()
 })
 
@@ -86,6 +114,7 @@ newItemForm.addEventListener("submit", e => {
 // Create a new object in the budget list. Object has a name, amount, and list of spent items
 function createBudget(category , amount) {
   return {
+    id: Date.now().toString(),
     name: category,
     budget: amount,
     items: []
@@ -94,6 +123,7 @@ function createBudget(category , amount) {
 
 function createItem(description, amount) {
   return {
+    id: Date.now().toString(),
     title: description,
     price: amount
   }
@@ -139,6 +169,8 @@ function renderBudgets() {
   clearElements(selectBox)
   budgetList.forEach(category => {
       const categoryElement = document.importNode(budgetTemplate.content, true)
+      const categoryCard = categoryElement.querySelector(".card")      
+      categoryCard.id = category.id
       const categoryTitle = categoryElement.querySelector(".card-title b")
       categoryTitle.append(category.name)
       const budget = categoryElement.getElementById("budget-amount") 
@@ -164,6 +196,8 @@ function renderItems() {
     const itemsList = category.items
     itemsList.forEach(item => {
         const itemElement = document.importNode(itemTemplate.content, true)
+        const itemCard = itemElement.querySelector(".card")      
+        itemCard.id = item.id
         const itemTitle = itemElement.querySelector(".card-title b")
         itemTitle.append(item.title)
         const categoryName = itemElement.querySelector("#spend-type small")

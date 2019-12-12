@@ -126,11 +126,41 @@ body {
 }
 
 .card-columns {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70vw !important;
 }
 
 .card {
-  box-shadow: 3px 3px #F9BC39;
+  border-radius: 10px !important;
+  transition: box-shadow .2;
+  width: 16vw !important;
+  height: 100%;
+  margin-right: 2%;
+}
+
+.card:hover {
+  border: 2px solid #F9BC39;
+}
+
+.card-body {
+  padding: 15px !important;
+}
+
+#close {
+  outline: none;
+  border: none;
+  padding: 0;
+  padding-top: -150px;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+  width: 100%;
+  text-align: right;
+}
+
+#close:hover {
+  opacity: 1;
 }
 
 #add-item {
@@ -171,6 +201,9 @@ body {
   opacity: .3;
 }
 
+select {
+  width: 13vw;
+}
 
 select:focus {
   outline: none;
