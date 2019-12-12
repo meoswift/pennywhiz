@@ -252,3 +252,7 @@ select:focus {
   width: 60vw;
   height: 40vh;
 }
+
+#date {
+  font-size: 25px;
+}

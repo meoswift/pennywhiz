@@ -229,3 +229,53 @@ function saveAndRender() {
   save()
   render()
 }
+
+// Elements in Overview tab
+let myChart = document.getElementById('myChart').getContext('2d');
+
+Chart.defaults.global.defaultFontFamily = 'Nunito';
+Chart.defaults.global.defaultFontSize = 20;
+Chart.defaults.global.defaultFontColor = 'grey';
+
+const spentData = [];
+const labelsCategory = [];
+
+for (i = 0; i < budgetList.length; i++){
+  spentData.push(budgetList[i].budget);
+  labelsCategory.push(budgetList[i].name);
+}
+
+let expensesChart = new Chart(myChart, {
+	type:'pie',
+	data:{
+	labels: labelsCategory,
+	datasets:[{
+		label: 'Expenses',
+		data: spentData,
+		backgroundColor: ['#048A81', '#06D6A0', '#54C6EB', '#DB3069', '#8A89C0'],
+		borderWidth:1,
+		borderColor:'grey',
+		hoverBorderWidth:3,
+		hoverBorderColor:'black'
+	}]
+	},
+	options:{
+    title: {
+      display: false,
+      text: 'Budget breakdown',
+      fontFamily: 'Nunito',
+      fontSize: 20,
+      padding: 10,
+    },
+    legend: {
+      position: 'right',
+      display: true,
+    },
+    layout: {
+      padding: 20
+    },
+    tooltips: {
+      enabled: true
+    },
+  }
+});
