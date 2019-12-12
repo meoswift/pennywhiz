@@ -96,12 +96,18 @@ body {
   border-radius: 50%;
   height: 110px;
   width: 110px;
-  border: 5px solid rgba(249, 188, 57,0.5);
+  border: 6px solid rgba(249, 188, 57,0.6);
   transition: border 0.2s;
 }
 
 .nav-item img:hover {
-  border: 5px solid #F9BC39;
+  border: 6px solid #F9BC39;
+}
+
+#tree {
+  margin-top: 46px;
+  width: 64px;
+  height: 64px;
 }
 
 .justify-content-center {
