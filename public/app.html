@@ -69,7 +69,32 @@
       <!-- REMAINED MONEY -->
       <div id="money-remained" class="need-margin hidden">inside remained</div>
       <!-- OVERVIEW -->
-      <div id="money-overview" class="need-margin hidden">inside overview</div>
+      <div id="money-overview" class="need-margin hidden">
+        <script>
+          var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+      		var response = JSON.parse(xhttp.responseText);
+			    var day = response.dayOfTheWeek;
+          var time = response.currentDateTime;
+      }
+      var temp = "";
+      for (var i = 0; i < time.length; i++) {
+          if (time[i] == 'T') {
+              break;
+          }
+          temp += time[i];
+      }
+      document.write(day + ", " + temp);
+    };
+    xhttp.open("GET", "http://worldclockapi.com/api/json/est/now", true);
+    xhttp.send();
+        </script>
+        
+        
+      
+      
+      </div>
 
       <template id="budget-template">
         <div class="card">
