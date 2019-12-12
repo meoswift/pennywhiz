@@ -1,58 +1,107 @@
 <!doctype html>
 <html>
+
 <head>
-  <meta charset = "UTF-8">
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
 </head>
 
 <body>
+	<div style="width: 75%">
+		<canvas id="canvas"></canvas>
+	</div>
 
-  <div class="container">
-    <canvas id="myChart"></canvas>
-  </div>
+	<script>
 
-  <script>
-    let myChart = document.getElementById('myChart').getContext('2d');
+		var spentData = [];
+		var remainData = [];
+		var labelsCategory = [];
 
-    Chart.defaults.global.defaultFontFamily = 'Helvetica';
-    Chart.defaults.global.defaultFontSize = 20;
-    Chart.defaults.global.defaultFontColor = 'grey';
+		// spentData.push('3240');
+		// remainData.push('4000');
+		// labelsCategory.push('Household');
+		//
+		// spentData.push('2000');
+		// remainData.push('3000');
+		// labelsCategory.push('Shopping');
+		//
+		// spentData.push('1980');
+		// remainData.push('500');
+		// labelsCategory.push('Food');
 
-    let expensesChart = new Chart(myChart, {
-      type:'pie',
-      data:{
-        labels: ['AUG','SEPT','OCT','NOV','DEC'],
-        datasets:[{
-          label: 'Expenses',
-          data: ['3320', '3590', '3390', '3480', '3200'],
-          backgroundColor: ['#f1e0bb', '#f5d697', '#f4cc79', '#f7cc6e', '#f9bb37'],
-          borderWidth:1,
-          borderColor:'grey',
-          hoverBorderWidth:3,
-          hoverBorderColor:'black'
-        }]
-      },
-      options:{
-        title: {
-          display: true,
-          //text: 'Expenses for the Month',
-          fontSize: 30,
-          padding: 30
-        },
-        legend: {
-          position: 'right'
-        },
-        layout: {
-          padding: 20
-        },
-        tooltips: {
-          enabled: true
-        },
-        //animation: true
-      }
-    });
-  </script>
+		var barChartData = {
+			labels: labelsCategory,
+			datasets: [{
+				label: 'Spent',
+				backgroundColor: '#bd1b1b',
+				data: spentData
+			}, {
+				label: 'Remaining',
+				backgroundColor: '#2a8cf2',
+				data: remainData
+			}]
+		};
 
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+
+			Chart.defaults.global.defaultFontSize = 20;
+			Chart.defaults.global.defaultFontFamily = 'Helvetica';
+
+			window.myBar = new Chart(ctx, {
+				type: 'bar',
+				data: barChartData,
+				options: {
+					title: {
+						display: true,
+						text: 'Budget Overview',
+						fontSize: 30,
+	          padding: 30
+					},
+					legend: {
+						display: false
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: false
+					},
+					responsive: true,
+					scales: {
+						xAxes: [{
+							stacked: true,
+						}],
+						yAxes: [{
+							stacked: true
+						}]
+					}
+				}
+			});
+		};
+
+		// function addData(chart, label, data) {
+    //   chart.data.labels.push(label);
+    //   //chart.data.datasets.forEach((dataset) => {
+    //   //    datasets.data.push(data);
+    //   //  });
+    //   chart.update();
+    // }
+		//
+    // function removeData(chart) {
+    //   chart.datasets.labels.pop();
+    //   chart.datasets.data.forEach((dataset) => {
+    //       datasets.data.pop();
+    //     });
+    //   chart.update();
+		// }
+
+	</script>
 </body>
+
 </html>
