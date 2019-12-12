@@ -26,6 +26,7 @@ budgetContainer.addEventListener('click', e => {
       selectedCategoryId = e.target.parentNode.parentNode.parentNode.id
       budgetList = budgetList.filter(list => list.id !== selectedCategoryId)
       selectedCategoryId = null
+      save()
       renderBudgets()
   }
 })
@@ -42,6 +43,7 @@ itemsContainer.addEventListener('click', e => {
       })
       
       selectedItemId = null
+      save()
       renderItems()
   }
 })
@@ -79,7 +81,7 @@ newBudgetForm.addEventListener("submit", e => {
 
   budgetList.push(budget)
 
-  saveAndRenderBudgets()
+  save()
   renderBudgets()
 })
 
@@ -214,9 +216,4 @@ function renderItems() {
 function saveAndRender() {
   save()
   render()
-}
-
-function saveAndRenderBudgets() {
-  save()
-  renderBudgets()
 }
