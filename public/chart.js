@@ -1,6 +1,6 @@
     let myChart = document.getElementById('myChart').getContext('2d');
 
-    Chart.defaults.global.defaultFontFamily = 'Helvetica';
+    Chart.defaults.global.defaultFontFamily = 'Nunito';
     Chart.defaults.global.defaultFontSize = 20;
     Chart.defaults.global.defaultFontColor = 'grey';
 
@@ -16,11 +16,11 @@
 			labels: labelsCategory,
 			datasets: [{
 				label: 'Spent',
-				backgroundColor: '#bd1b1b',
+				backgroundColor: '#f49898',
 				data: spentData
 			}, {
 				label: 'Remaining',
-				backgroundColor: '#2a8cf2',
+				backgroundColor: '#a5dd95',
 				data: remainData
 			}]
 		};
@@ -30,7 +30,7 @@
       data: barChartData,
       options:{
         title: {
-          display: true,
+          display: false,
           text: 'Recent Activity',
           fontSize: 30,
           padding: 30
