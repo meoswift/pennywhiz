@@ -29,16 +29,13 @@
       <div id="sidebar">
         <ul class="nav flex-column" id="sidebar">
           <li class="nav-item">
-            <button class="nav-link clicked" id="planned">Planned</button>
+            <button class="nav-link clicked" id="planned">💵 Planned</button>
           <li class="nav-item">
-              <button class="nav-link" id="spent">Spent</button>
+              <button class="nav-link" id="spent">💸 Spent</button>
+              <hr>
           </li>
           <li class="nav-item">
-            <button class="nav-link" id="remained">Remained</button>
-            <hr>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" id="overview">Overview</button>
+            <button class="nav-link" id="overview">🤑 Remained</button>
           </li>
         </ul>
       </div>
@@ -46,9 +43,9 @@
       <div id="money-planned" class="need-margin hidden">
         <h3>Add a new budget category</h3>
         <form id="planned-form">
+          <button class="btn create">+</button>
           <input class="new" placeholder="category" data-new-category> 
           <input class="new" placeholder="budget" data-new-budget>
-          <button>+</button>
         </form>
         <br>
         <div class="card-columns" id="budget-container"></div>
@@ -57,20 +54,17 @@
       <div id="money-spent" class="need-margin hidden">
         <h3>Add a new item you spent on</h3>
         <form id="spent-form">
+          <button class="btn create">+</button>
           <input class="new" placeholder="description" data-new-description>
           <input class="new" placeholder="price" data-new-price>
           <select id="select-box" data-category-options></select>
-          <button>+</button>
         </form>
         <br>
         <div class="card-columns" id="items-container"></div>
       </div>
-      <!-- REMAINED MONEY -->
-      <div id="money-remained" class="need-margin hidden">inside remained</div>
       <!-- OVERVIEW -->
       <div id="money-overview" class="need-margin hidden">
 	      Overview
-
       </div>
 
       <template id="budget-template">

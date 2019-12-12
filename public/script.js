@@ -68,6 +68,8 @@ sidebar.addEventListener('click', e => {
 // When a form for new budget category is added, display that on the UI
 newBudgetForm.addEventListener("submit", e => {
   e.preventDefault()  
+  newBudgetCategory.focus()
+
   const categoryName = newBudgetCategory.value
   const budgetAmount = newBudgetAmount.value  
 
@@ -87,6 +89,8 @@ newBudgetForm.addEventListener("submit", e => {
 
 newItemForm.addEventListener("submit", e => {
   e.preventDefault()
+  newDescription.focus()
+  
   const itemDescription = newDescription.value
   const itemPrice = newPrice.value
   const categoryName = categoryOptions.value
