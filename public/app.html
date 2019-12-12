@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-      body { 
+      html, body { 
         background-color: white; 
         font-family: 'Nunito', serif;
-        margin: 0;
         display: inline;
+        margin: 0 5% 0 0;
       };
     </style>
     <title>PennyWhiz</title>
@@ -30,7 +30,7 @@
       <div id="sidebar">
         <ul class="nav flex-column" id="sidebar">
           <li class="nav-item">
-            <button class="nav-link" id="planned">Planned</button>
+            <button class="nav-link clicked" id="planned">Planned</button>
           <li class="nav-item">
               <button class="nav-link" id="spent">Spent</button>
           </li>
@@ -46,41 +46,47 @@
       <!-- PLANNED MONEY -->
       <div id="money-planned" class="need-margin hidden">
         <h3>Add a new budget category</h3>
-        <form action="">
-          <input class="new" placeholder="category">
-          <input class="new" placeholder="budget">
+        <form id="planned-form">
+          <input class="new" placeholder="category" data-new-category> 
+          <input class="new" placeholder="budget" data-new-budget>
           <button>+</button>
         </form>
+        <br>
+        <div class="card-columns" id="budget-container"></div>
       </div>
       <!-- SPENT MONEY -->
-      <div id="money-spent" class="need-margin overflow-auto hidden">
+      <div id="money-spent" class="need-margin hidden">
         <h3>Add a new item you spent on</h3>
-        <form action="">
-          <input class="new" placeholder="description">
-          <input class="new" type="text" placeholder="price">
-          <select>
-              <option selected disabled>Category</option>
-              <option>Household</option>
-              <option>Transportation</option>
-              <option>Health and wellness</option>
-              <option>Shopping</option>
-            </select>
-            <button>+</button>
+        <form id="spent-form">
+          <input class="new" placeholder="description" data-new-description>
+          <input class="new" placeholder="price" data-new-price>
+          <select id="select-box" data-category-options></select>
+          <button>+</button>
         </form>
         <br>
-        <div class="card-columns">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><b>Christmas tree</b></h5>
-              <p class="card-text" id="spend-type"><small class="text-muted">Household</small></p>
-              <p class="card-text" id="spend-amount">$300</p>
-            </div>
-          </div>
-        </div>
+        <div class="card-columns" id="items-container"></div>
       </div>
       <!-- REMAINED MONEY -->
       <div id="money-remained" class="need-margin hidden">inside remained</div>
       <!-- OVERVIEW -->
       <div id="money-overview" class="need-margin hidden">inside overview</div>
+
+      <template id="budget-template">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><b></b></h5>
+            <p class="card-text" id="budget-amount">$</p>
+          </div>
+        </div>
+      </template>
+      <template id="item-template">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><b></b></h5>
+            <p class="card-text" id="spend-type"><small class="text-muted"></small></p>
+            <p class="card-text" id="spend-amount">$</p>
+          </div>
+        </div>
+      </template>
   </body>
 </html>

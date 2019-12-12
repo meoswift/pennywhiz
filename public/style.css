@@ -125,8 +125,11 @@ body {
   margin-left: 25%;
 }
 
+.card-columns {
+  display: inline-block;
+}
+
 .card {
-  border-radius: 20px;
   box-shadow: 3px 3px #F9BC39;
 }
 
