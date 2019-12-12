@@ -39,7 +39,7 @@
 				data: spentData
 			}, {
 				label: 'Remaining',
-				backgroundColor: '#a5dd95',
+				backgroundColor: '#95ddab',
 				data: remainData
 			}]
 		};
