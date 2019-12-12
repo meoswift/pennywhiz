@@ -92,11 +92,13 @@
         </div>
       </template>
 	            <script>
+			    
           var xhttp = new XMLHttpRequest();
+	var day = "The Date is ";
 		xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
       		var response = JSON.parse(xhttp.responseText);
-		var day = response.dayOfTheWeek;
+		day += response.dayOfTheWeek;
           	var time = response.currentDateTime;
       	}
 //       var temp = "";
@@ -106,7 +108,7 @@
 //           }
 //           temp += time[i];
 //       }
-	//document.getElementById('money-overview').innerHTML = day;
+	document.getElementById('money-overview').innerHTML = day;
 			//document.write(day);
     };
     xhttp.open("GET", "http://worldclockapi.com/api/json/est/now", true);
