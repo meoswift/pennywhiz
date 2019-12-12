@@ -1,33 +1,46 @@
-let myChart = document.getElementById('myChart').getContext('2d');
+    let myChart = document.getElementById('myChart').getContext('2d');
 
     Chart.defaults.global.defaultFontFamily = 'Helvetica';
     Chart.defaults.global.defaultFontSize = 20;
     Chart.defaults.global.defaultFontColor = 'grey';
-    //
-    // var categoryLabels = [];
-    // categoryLabels.push( ) //categories of users!!
-    //
-    // var expensesData = [];
-    // var expensesColor = [];
+
+    var spentData = [];
+    var remainData = [];
+    var labelsCategory = [];
+
+		spentData.push('3240');
+		remainData.push('4000');
+		labelsCategory.push('Household');
+
+		spentData.push('2000');
+		remainData.push('3000');
+		labelsCategory.push('Shopping');
+
+		spentData.push('1980');
+		remainData.push('500');
+		labelsCategory.push('Food');
+ 
+
+    var barChartData = {
+			labels: labelsCategory,
+			datasets: [{
+				label: 'Spent',
+				backgroundColor: '#bd1b1b',
+				data: spentData
+			}, {
+				label: 'Remaining',
+				backgroundColor: '#2a8cf2',
+				data: remainData
+			}]
+		};
 
     let expensesChart = new Chart(myChart, {
-      type:'pie',
-      data:{
-        labels: ['C1','C2','C3','C4','C5'],
-        datasets:[{
-          label: 'Expenses',
-          data: ['3320', '3590', '3390', '3480', '3200'],
-          backgroundColor: ['#f1e0bb', '#f5d697', '#f4cc79', '#f7cc6e', '#f9bb37'],
-          borderWidth:1,
-          borderColor:'grey',
-          hoverBorderWidth:3,
-          hoverBorderColor:'black'
-        }]
-      },
+      type:'bar',
+      data: barChartData,
       options:{
         title: {
           display: true,
-          text: 'Recent Activity',
+          text: 'Budget Overview',
           fontSize: 30,
           padding: 30
         },
@@ -39,10 +52,19 @@ let myChart = document.getElementById('myChart').getContext('2d');
           padding: 20
         },
         tooltips: {
-          enabled: true
+          enabled: true,
+          mode: 'index',
+          intersect: false
         },
-        //animation: true
-      }
+        responsive: true,
+        scales: {
+          xAxes: [{
+            stacked: true,
+          }],
+          yAxes: [{
+            stacked: true
+          }]
+        }
     });
 
     function addData(chart, label, data) {
