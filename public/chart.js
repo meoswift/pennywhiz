@@ -65,6 +65,7 @@
             stacked: true
           }]
         }
+    }
     });
 
     function addData(chart, label, data) {
