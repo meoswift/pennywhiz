@@ -8,12 +8,25 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900|Nunito|Playfair+Display:700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	// charts
+	<script src="chart.js" charset="utf-8" defer></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	  
     <style>
       html, body { 
         background-color: white; 
         font-family: 'Nunito', serif;
         display: inline;
       };
+		canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+		
+		
     </style>
     <title>PennyWhiz</title>
   </head>
@@ -64,7 +77,9 @@
       </div>
       <!-- OVERVIEW -->
       <div id="money-overview" class="need-margin hidden">
-	      Overview
+	      <div style="width: 75%">
+		<canvas id="myChart"></canvas>
+			</div>
       </div>
 
       <template id="budget-template">
