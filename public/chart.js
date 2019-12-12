@@ -1,33 +1,11 @@
-<!doctype html>
-<html>
+var spentData = [];
+var remainData = [];
+var labelsCategory = [];
 
-<head>
-	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<style>
-	canvas {
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-	}
-	</style>
-</head>
+spentData.push('3240');
+remainData.push('4000');
+labelsCategory.push('Household');
 
-<body>
-	<div style="width: 75%">
-		<canvas id="myChart"></canvas>
-	</div>
-
-	<script>
-
-		var spentData = [];
-		var remainData = [];
-		var labelsCategory = [];
-
-		// spentData.push('3240');
-		// remainData.push('4000');
-		// labelsCategory.push('Household');
-		//
 		// spentData.push('2000');
 		// remainData.push('3000');
 		// labelsCategory.push('Shopping');
@@ -100,8 +78,3 @@
     //     });
     //   chart.update();
 		// }
-
-	</script>
-</body>
-
-</html>
