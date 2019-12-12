@@ -15,7 +15,7 @@
 
 <body>
 	<div style="width: 75%">
-		<canvas id="canvas"></canvas>
+		<canvas id="myChart"></canvas>
 	</div>
 
 	<script>
@@ -50,7 +50,7 @@
 		};
 
 		window.onload = function() {
-			var ctx = document.getElementById('canvas').getContext('2d');
+			var ctx = document.getElementById('myChart').getContext('2d');
 
 			Chart.defaults.global.defaultFontSize = 20;
 			Chart.defaults.global.defaultFontFamily = 'Helvetica';
