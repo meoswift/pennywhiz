@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000
 
 // MONGO CONNECTION
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://gmelcher:131313A@ds253428.mlab.com:53428/heroku_k05ffvws";
+const uri = "mongodb://gmelcher:131313A@ds253428.mlab.com:53428/heroku_k05ffvws" || "mongodb://localhost:5000"
 MongoClient.connect(uri, function (err, client) {
   // perform actions on the collection object
   // client.close();
