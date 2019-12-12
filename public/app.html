@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,12 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900|Nunito|Playfair+Display:700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	
-	// charts
-	<script src="chart.js" charset="utf-8" defer></script>
-	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	  
+    <!-- Charts -->
+    <script src="chart.js" charset="utf-8" defer></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <style>
       html, body { 
         background-color: white; 
@@ -104,18 +102,17 @@
         </div>
       </template>
   </body>
-	  <script>
-			    
-          var xhttp = new XMLHttpRequest();
-	  var day = "The Date is ";
-		xhttp.onreadystatechange = function() {
-    	if (this.readyState == 4 && this.status == 200) {
-      		var response = JSON.parse(xhttp.responseText);
-		day += response.dayOfTheWeek;
-		document.getElementById('money-overview').innerHTML = day;
-      	}
-    };
-    xhttp.open("GET", "http://worldclockapi.com/api/json/est/now", true);
-    xhttp.send();
-        </script>
+	  <script>   
+      var xhttp = new XMLHttpRequest();
+      var day = "The Date is ";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(xhttp.responseText);
+      day += response.dayOfTheWeek;
+      document.getElementById('money-overview').innerHTML = day;
+          }
+      };
+      xhttp.open("GET", "http://worldclockapi.com/api/json/est/now", true);
+      xhttp.send();
+    </script>
 </html>
