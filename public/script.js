@@ -230,7 +230,7 @@ function saveAndRender() {
   render()
 }
 
-// Elements in Overview tab
+// Elements in Overview tab with Chart.js
 let myChart = document.getElementById('myChart').getContext('2d');
 
 Chart.defaults.global.defaultFontFamily = 'Nunito';
