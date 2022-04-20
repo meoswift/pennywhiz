@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/convict": "^4.2.1",
     "@types/dotenv": "^8.2.0",
-    "convict": "^5.2.0",
+    "convict": "^6.2.2",
     "dotenv": "^8.2.0",
     "request": "^2.81.0",
     "tape": "^4.7.0",
